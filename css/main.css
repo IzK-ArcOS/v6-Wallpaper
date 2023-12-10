@@ -1,3 +1,8 @@
-window#appTemplate { /* Rename appTemplate to the ID of the app */
-  color: #f0f;
+window#desktopWallpaper div.wallpaper {
+  background-position: center;
+  background-size: cover;
+}
+
+window#desktopWallpaper div.wallpaper:not(.nobg) {
+  background-image: url("../../assets/bg/img03.png");
 }

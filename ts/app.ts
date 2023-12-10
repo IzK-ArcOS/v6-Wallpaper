@@ -1,22 +1,25 @@
 import { DefaultIcon } from "$ts/images/apps";
-import { Runtime } from "./runtime";
+import { WallpaperRuntime } from "./runtime";
 import AppSvelte from "../App.svelte";
+import { App } from "$types/app";
 
-export const app: App = {
+export const desktopWallpaper: App = {
   metadata: {
-    name: "App Template",
-    description: "This is an app template",
+    name: "Desktop Wallpaper",
+    description: "The beautiful wallpaper you set; rendered.",
     author: "The ArcOS Team",
-    version: "0.0.0",
-    icon: DefaultIcon
+    version: "1.0.0",
+    icon: DefaultIcon,
+    core: true
   },
-  runtime: Runtime,
+  runtime: WallpaperRuntime,
   content: AppSvelte,
-  id: "appTemplate",
+  id: "desktopWallpaper",
   size: { w: 0, h: 0 },
   minSize: { w: 0, h: 0 },
   maxSize: { w: 0, h: 0 },
   pos: { x: 0, y: 0 },
+  controls: { minimize: false, maximize: false, close: false },
   state: {
     minimized: false,
     maximized: false,

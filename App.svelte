@@ -1,8 +1,26 @@
 <script lang="ts">
+  import { UserDataStore } from "$ts/stores/user";
+  import { getWallpaper } from "$ts/wallpaper";
+  import { App } from "$types/app";
   import "./css/main.css";
 
-  export let app: App;
+  let url = "";
+  let previous = "";
+
+  UserDataStore.subscribe(async (v) => {
+    if (!v) return;
+
+    console.log(v);
+    const wallpaper = $UserDataStore.sh.desktop.wallpaper;
+
+    if (previous == wallpaper) return;
+
+    previous = wallpaper;
+
+    const u = (await getWallpaper(wallpaper)).url;
+
+    if (u != url) url = u;
+  });
 </script>
 
-<h1>Hello, World!</h1>
-<p>Working! App {app.metadata.name}, version {app.metadata.version}.</p>
+<div class="wallpaper fullscreen" style="background-image: url({url});" />
