@@ -25,5 +25,6 @@ export const desktopWallpaper: App = {
     maximized: false,
     headless: false,
     fullscreen: false,
+    resizable: false
   }
 }
