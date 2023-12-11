@@ -1,7 +1,6 @@
 <script lang="ts">
   import { UserDataStore } from "$ts/stores/user";
   import { getWallpaper } from "$ts/wallpaper";
-  import { App } from "$types/app";
   import "./css/main.css";
 
   let url = "";
@@ -10,7 +9,6 @@
   UserDataStore.subscribe(async (v) => {
     if (!v) return;
 
-    console.log(v);
     const wallpaper = $UserDataStore.sh.desktop.wallpaper;
 
     if (previous == wallpaper) return;
