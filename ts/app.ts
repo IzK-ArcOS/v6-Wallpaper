@@ -1,7 +1,7 @@
 import { DefaultIcon } from "$ts/images/apps";
-import { WallpaperRuntime } from "./runtime";
-import AppSvelte from "../App.svelte";
 import { App } from "$types/app";
+import AppSvelte from "../App.svelte";
+import { WallpaperRuntime } from "./runtime";
 
 export const desktopWallpaper: App = {
   metadata: {
