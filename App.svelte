@@ -1,6 +1,7 @@
 <script lang="ts">
   import { UserDataStore } from "$ts/stores/user";
   import { getWallpaper } from "$ts/wallpaper";
+  import DesktopIcons from "./Components/DesktopIcons.svelte";
   import "./css/main.css";
 
   let url = "";
@@ -21,4 +22,6 @@
   });
 </script>
 
-<div class="wallpaper fullscreen" style="background-image: url({url});" />
+<div class="wallpaper fullscreen" style="background-image: url({url});">
+  <DesktopIcons />
+</div>

@@ -1,0 +1,19 @@
+#desktopWallpaper div.desktopIcons.tb-vertical-right,
+#desktopWallpaper div.desktopIcons.tb-vertical {
+  width: calc(100% - var(--size-secondary)) !important;
+  height: 100% !important;
+}
+
+#desktopWallpaper div.desktopIcons.tb-vertical {
+  transform: translate3d(var(--size-secondary), 0px, 0px) !important;
+}
+
+#desktopWallpaper div.desktopIcons.tb-,
+#desktopWallpaper div.desktopIcons.tb-top {
+  width: 100% !important;
+  height: calc(100% - var(--size-secondary)) !important;
+}
+
+#desktopWallpaper div.desktopIcons.tb-top {
+  transform: translate3d(0px, var(--size-secondary), 0px) !important;
+}
