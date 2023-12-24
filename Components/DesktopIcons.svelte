@@ -1,15 +1,11 @@
 <script lang="ts">
-  import {
-    alignDesktopIcons,
-    checkDesktopIconLength,
-  } from "$apps/Wallpaper/ts/icons";
+  import { alignDesktopIcons } from "$apps/Wallpaper/ts/icons";
+  import { isPopulatable } from "$ts/apps";
   import { appLibrary } from "$ts/stores/apps";
   import { UserDataStore } from "$ts/stores/user";
-  import { App } from "$types/app";
   import { onMount } from "svelte";
   import DesktopIcon from "./DesktopIcons/DesktopIcon.svelte";
 
-  let store: Map<string, App> = new Map([]);
   let loading = false;
 
   async function update() {
@@ -26,19 +22,6 @@
         loading = false;
       }, 100);
     }
-
-    await checkDesktopIconLength();
-
-    const len = store.size;
-    const newStore = appLibrary.get();
-
-    if (newStore.size !== len) {
-      loading = true;
-      store = newStore;
-      setTimeout(() => {
-        loading = false;
-      });
-    }
   }
 
   onMount(update);
@@ -51,8 +34,10 @@
     class="desktopIcons taskbar-bounds tb-{$UserDataStore.sh.taskbar.pos}"
     class:docked={$UserDataStore.sh.taskbar.docked}
   >
-    {#each [...store] as [_, app]}
-      <DesktopIcon {app} />
+    {#each [...$appLibrary] as [_, app]}
+      {#if isPopulatable(app)}
+        <DesktopIcon {app} />
+      {/if}
     {/each}
   </div>
 {/if}
