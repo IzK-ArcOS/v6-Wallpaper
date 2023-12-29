@@ -7,7 +7,7 @@ let LOCKED = false;
 
 export async function alignDesktopIcons(overrideLock = false) {
   Log(
-    "Shell/ts/icons",
+    "Wallpaper/ts/icons",
     `Automatically positioning desktop icons (OVERRIDE=${overrideLock}, LOCKED=${LOCKED})`
   );
 
@@ -40,7 +40,7 @@ export async function alignDesktopIcons(overrideLock = false) {
     if (app.core || app.id == "ExperimentsApp") continue;
 
     Log(
-      "Shell/ts/icons",
+      "Wallpaper/ts/icons",
       `Automatically positioning desktop icon for ${app.id}`
     );
 
