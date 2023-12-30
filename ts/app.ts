@@ -1,4 +1,5 @@
 import { DefaultIcon } from "$ts/images/apps";
+import { UserDataStore } from "$ts/stores/user";
 import { App } from "$types/app";
 import AppSvelte from "../App.svelte";
 import { WallpaperRuntime } from "./runtime";
@@ -10,7 +11,8 @@ export const desktopWallpaper: App = {
     author: "The ArcOS Team",
     version: "1.0.0",
     icon: DefaultIcon,
-    core: true
+    core: true,
+    hidden: true
   },
   runtime: WallpaperRuntime,
   content: AppSvelte,
@@ -26,5 +28,7 @@ export const desktopWallpaper: App = {
     headless: false,
     fullscreen: false,
     resizable: false
-  }
+  },
+  singleInstance: true,
+  loadCondition: () => !!UserDataStore.get()
 }
