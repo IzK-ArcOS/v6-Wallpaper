@@ -33,6 +33,7 @@
   <div
     class="desktopIcons taskbar-bounds tb-{$UserDataStore.sh.taskbar.pos}"
     class:docked={$UserDataStore.sh.taskbar.docked}
+    data-contextmenu="shell-wallpaper"
   >
     {#each [...$appLibrary] as [_, app]}
       {#if isPopulatable(app)}

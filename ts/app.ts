@@ -2,6 +2,7 @@ import { DefaultIcon } from "$ts/images/apps";
 import { UserDataStore } from "$ts/stores/user";
 import { App } from "$types/app";
 import AppSvelte from "../App.svelte";
+import { WallpaperContext } from "./context";
 import { WallpaperRuntime } from "./runtime";
 
 export const desktopWallpaper: App = {
@@ -30,5 +31,6 @@ export const desktopWallpaper: App = {
     resizable: false
   },
   singleInstance: true,
+  contextMenu: WallpaperContext,
   loadCondition: () => !!UserDataStore.get()
 }
