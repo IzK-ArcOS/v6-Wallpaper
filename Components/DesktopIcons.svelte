@@ -1,6 +1,5 @@
 <script lang="ts">
   import { alignDesktopIcons } from "$apps/Wallpaper/ts/icons";
-  import { isPopulatable } from "$ts/apps";
   import { appLibrary } from "$ts/stores/apps";
   import { UserDataStore } from "$ts/stores/user";
   import { onMount } from "svelte";
@@ -36,9 +35,7 @@
     data-contextmenu="shell-wallpaper"
   >
     {#each [...$appLibrary] as [_, app]}
-      {#if isPopulatable(app)}
-        <DesktopIcon {app} />
-      {/if}
+      <DesktopIcon {app} />
     {/each}
   </div>
 {/if}
