@@ -64,7 +64,8 @@ export const WallpaperContext: AppContextMenu = {
             },
             suggested: true,
           },
-          { caption: "Cancel", action() { } }]
+          { caption: "Cancel", action() { } }],
+          sound: "arcos.dialog.warning"
         }, ProcessStack.getAppPids("ArcShell")[0], true);
       },
       icon: "undo",
