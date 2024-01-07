@@ -22,6 +22,10 @@
   });
 </script>
 
-<div class="wallpaper fullscreen" style="background-image: url({url});">
+<div
+  class="wallpaper fullscreen"
+  style="background-image: url({url});"
+  data-contextmenu="shell-wallpaper"
+>
   <DesktopIcons />
 </div>
