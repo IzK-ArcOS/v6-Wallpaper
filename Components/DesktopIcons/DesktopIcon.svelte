@@ -1,6 +1,7 @@
 <script lang="ts">
   import { isIconSpotAvailable } from "$apps/Wallpaper/ts/icons";
   import { isPopulatable, spawnApp } from "$ts/apps";
+  import { isDisabled } from "$ts/apps/disable/utils";
   import { getAppPreference, setAppPreference } from "$ts/server/user/pref";
   import { UserDataStore } from "$ts/stores/user";
   import { App } from "$types/app";
@@ -15,7 +16,7 @@
   let populatable = true;
 
   UserDataStore.subscribe((v) => {
-    populatable = isPopulatable(app);
+    populatable = isPopulatable(app) && !isDisabled(app.id);
   });
 
   function open() {
