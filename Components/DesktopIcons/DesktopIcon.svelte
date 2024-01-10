@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { isIconSpotAvailable } from "$apps/Wallpaper/ts/icons";
   import { isPopulatable, spawnApp } from "$ts/apps";
   import { isDisabled } from "$ts/apps/disable/utils";
   import { getAppPreference, setAppPreference } from "$ts/server/user/pref";
@@ -37,13 +36,6 @@
 
   function endDrag(e: CustomEvent<DragEventData>) {
     const { offsetX, offsetY } = e.detail;
-    const available = isIconSpotAvailable(offsetX, offsetY);
-
-    if (!available) {
-      position = previousPosition;
-
-      return;
-    }
 
     setAppPreference("ArcShell", `icon$${app.id}`, {
       x: offsetX,

@@ -34,9 +34,7 @@ export async function alignDesktopIcons(overrideLock = false) {
   let offsetX = 0;
   let offsetY = 0;
 
-  for (let i = 0; i < apps.length; i++) {
-    const app = apps[i];
-
+  for (const app of apps) {
     if (app.core || app.id == "ExperimentsApp") continue;
 
     Log(
@@ -60,41 +58,4 @@ export async function alignDesktopIcons(overrideLock = false) {
   }
 
   UserDataStore.set(udata);
-}
-
-export async function checkDesktopIconLength() {
-  const udata = UserDataStore.get()
-  const shell = udata.appdata["ArcShell"];
-
-  if (!shell) return;
-
-  const icons = Object.keys(shell).map((i) => i.startsWith("icon$")).length;
-  const apps = appLibrary.get().size;
-
-  // TODO: Properly do this function
-}
-
-export function isIconSpotAvailable(x: number, y: number) {
-  /* const [IW, IH] = [80, 85];
-  const udata = get(UserData);
-  const shell = udata.appdata["ArcShell"] as {
-    [key: string]: { x: number; y: number };
-  };
-
-  if (!shell) return false;
-
-  const icons = Object.keys(shell).filter((i) => i.startsWith("icon$"));
-
-  for (let i = 0; i < icons.length; i++) {
-    const icon = shell[icons[i]];
-
-    if (
-      icon &&
-      ((x >= icon.x && x < icon.x + IW && y >= icon.y && y < icon.y + IH) ||
-        (icon.x >= x && icon.x < x + IW && icon.y >= y && icon.y < y + IH))
-    )
-      return false;
-  }
- */
-  return true;
 }
