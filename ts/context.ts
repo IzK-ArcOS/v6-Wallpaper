@@ -1,8 +1,7 @@
 import { OpenSettingsPage } from "$apps/Settings/ts/main";
 import { SEP_ITEM } from "$state/Desktop/ts/store";
 import { spawnApp } from "$ts/apps";
-import { AppInfoIcon, ProcessManagerIcon, SettingsIcon } from "$ts/images/apps";
-import { ErrorIcon, WarningIcon } from "$ts/images/dialog";
+import { AppInfoIcon, ProcessManagerIcon } from "$ts/images/apps";
 import { AppsIcon, DesktopIcon, PersonalizationIcon, ThemesIcon } from "$ts/images/general";
 import { ShutdownIcon } from "$ts/images/power";
 import { createErrorDialog } from "$ts/process/error";
