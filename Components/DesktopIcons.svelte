@@ -2,12 +2,14 @@
   import { alignDesktopIcons } from "$apps/Wallpaper/ts/icons";
   import { appLibrary } from "$ts/stores/apps";
   import { UserDataStore } from "$ts/stores/user";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import DesktopIcon from "./DesktopIcons/DesktopIcon.svelte";
 
   let loading = false;
-
+  let alu;
+  let udsu;
   async function update() {
+    if (!$UserDataStore) return;
     if (
       !$UserDataStore.appdata["ArcShell"] ||
       !Object.keys($UserDataStore.appdata["ArcShell"])
@@ -23,9 +25,17 @@
     }
   }
 
-  onMount(update);
-  appLibrary.subscribe(update);
-  UserDataStore.subscribe(update);
+  onMount(() => {
+    update();
+
+    alu = appLibrary.subscribe(update);
+    udsu = UserDataStore.subscribe(update);
+  });
+
+  onDestroy(() => {
+    alu();
+    udsu();
+  });
 </script>
 
 {#if !loading && $UserDataStore.sh.desktop.icons}
