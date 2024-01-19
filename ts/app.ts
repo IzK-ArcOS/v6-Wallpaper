@@ -10,8 +10,8 @@ export const desktopWallpaper: App = {
     name: "Desktop Wallpaper",
     description: "The beautiful wallpaper you set; rendered.",
     author: "The ArcOS Team",
-    version: "1.0.0",
-    appGroup: "internal",
+    version: "2.0.0",
+    appGroup: "coreApps",
     icon: DefaultIcon,
     core: true,
     hidden: true
