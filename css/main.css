@@ -6,5 +6,5 @@ window#desktopWallpaper div.wallpaper {
 }
 
 window#desktopWallpaper div.wallpaper:not(.nobg) {
-  background-image: url("../../../assets/bg/img03.png");
+  background-image: var(--wallpaper);
 }
