@@ -1,9 +1,10 @@
 import { OpenSettingsPage } from "$apps/Settings/ts/main";
+import { restart, shutdown } from "$state/Desktop/ts/power";
 import { SEP_ITEM } from "$state/Desktop/ts/store";
 import { spawnApp } from "$ts/apps";
 import { AppInfoIcon, ProcessManagerIcon } from "$ts/images/apps";
 import { AppsIcon, DesktopIcon, PersonalizationIcon, ThemesIcon } from "$ts/images/general";
-import { ShutdownIcon } from "$ts/images/power";
+import { RestartIcon, ShutdownIcon } from "$ts/images/power";
 import { createErrorDialog } from "$ts/process/error";
 import { killAllAppInstances } from "$ts/process/kill";
 import { ProcessStack } from "$ts/stores/process";
@@ -98,17 +99,17 @@ export const WallpaperContext: AppContextMenu = {
       image: AppsIcon,
     },
     // TODO: IMPLEMENT THESE
-    /* SEP_ITEM,
+    SEP_ITEM,
     {
       caption: "Shut down",
       action: shutdown,
       image: ShutdownIcon,
-    }, 
+    },
     {
       caption: "Restart",
-      action: () => restart(false),
+      action: restart,
       image: RestartIcon,
-    }, */
+    },
     SEP_ITEM,
     {
       caption: "Themes",
