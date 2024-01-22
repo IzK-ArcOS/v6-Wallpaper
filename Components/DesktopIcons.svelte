@@ -11,7 +11,6 @@
   async function update() {
     if (!$UserDataStore) return;
     if (
-      !$UserDataStore.appdata["ArcShell"] ||
       !Object.keys($UserDataStore.appdata["ArcShell"])
         .join(",")
         .includes("icon$")

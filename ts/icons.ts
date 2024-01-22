@@ -16,8 +16,6 @@ export async function alignDesktopIcons(overrideLock = false) {
   if (LOCKED && !overrideLock) return;
   if (!overrideLock) LOCKED = true;
 
-  if (!udata.appdata.ArcShell) udata.appdata.ArcShell = {};
-
   await sleep(100); // Wait for the rest of the apps to be loaded
 
   const library = appLibrary.get();
