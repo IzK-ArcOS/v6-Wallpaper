@@ -1,4 +1,4 @@
-import { DefaultIcon } from "$ts/images/apps";
+import { ComponentIcon } from "$ts/images/general";
 import { UserDataStore } from "$ts/stores/user";
 import { App } from "$types/app";
 import AppSvelte from "../App.svelte";
@@ -12,7 +12,7 @@ export const desktopWallpaper: App = {
     author: "The ArcOS Team",
     version: "2.0.0",
     appGroup: "coreApps",
-    icon: DefaultIcon,
+    icon: ComponentIcon,
     core: true,
     hidden: true
   },
