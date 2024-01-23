@@ -37,7 +37,7 @@ export async function alignDesktopIcons(overrideLock = false) {
   let offsetY = 0;
 
   for (const app of apps) {
-    if (app.metadata.core || app.id == "ExperimentsApp") continue;
+    if (app.id == "ExperimentsApp") continue;
 
     Log(
       "Wallpaper/ts/icons",
