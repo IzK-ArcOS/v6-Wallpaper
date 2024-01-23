@@ -2,6 +2,7 @@ import { Log } from "$ts/console";
 import { appLibrary } from "$ts/stores/apps";
 import { UserDataStore } from "$ts/stores/user";
 import { sleep } from "$ts/util";
+import { App } from "$types/app";
 
 let LOCKED = false;
 
@@ -19,11 +20,14 @@ export async function alignDesktopIcons(overrideLock = false) {
   await sleep(100); // Wait for the rest of the apps to be loaded
 
   const library = appLibrary.get();
-  const apps = []
+
+  let apps: App[] = []
 
   for (const [_, app] of library) {
     apps.push(app)
   }
+
+  apps = apps.sort((a) => a.metadata.hidden || a.metadata.core ? 1 : -1);
 
   const GRIDX = 80;
   const GRIDY = 85;
@@ -33,7 +37,7 @@ export async function alignDesktopIcons(overrideLock = false) {
   let offsetY = 0;
 
   for (const app of apps) {
-    if (app.core || app.id == "ExperimentsApp") continue;
+    if (app.metadata.core || app.id == "ExperimentsApp") continue;
 
     Log(
       "Wallpaper/ts/icons",
