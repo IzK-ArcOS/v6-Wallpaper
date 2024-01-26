@@ -8,6 +8,7 @@
   let loading = false;
   let alu;
   let udsu;
+
   async function update() {
     if (!$UserDataStore) return;
     if (
@@ -16,7 +17,7 @@
         .includes("icon$")
     ) {
       loading = true;
-      await alignDesktopIcons();
+      await alignDesktopIcons(true);
 
       setTimeout(() => {
         loading = false;
