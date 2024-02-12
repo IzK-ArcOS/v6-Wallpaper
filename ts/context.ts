@@ -74,7 +74,20 @@ export const WallpaperContext: AppContextMenu = {
             }, ProcessStack.getAppPids("ArcShell")[0], true);
           },
           icon: "undo",
-        },]
+        },
+        SEP_ITEM,
+        {
+          caption: "Show hidden apps",
+          action() {
+            UserDataStore.update((v) => {
+              v.sh.showHiddenApps = !v.sh.showHiddenApps;
+
+              return v;
+            })
+          },
+          isActive: () => UserDataStore.get().sh.showHiddenApps
+        }
+      ]
     },
     SEP_ITEM,
     /* {
