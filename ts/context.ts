@@ -2,7 +2,7 @@ import { OpenSettingsPage } from "$apps/Settings/ts/main";
 import { restart, shutdown } from "$state/Desktop/ts/power";
 import { SEP_ITEM } from "$state/Desktop/ts/store";
 import { spawnApp } from "$ts/apps";
-import { AppInfoIcon, ProcessManagerIcon } from "$ts/images/apps";
+import { AppInfoIcon, FileManagerIcon, ProcessManagerIcon } from "$ts/images/apps";
 import { AppsIcon, DesktopIcon, PersonalizationIcon, ThemesIcon } from "$ts/images/general";
 import { RestartIcon, ShutdownIcon } from "$ts/images/power";
 import { createErrorDialog } from "$ts/process/error";
@@ -57,21 +57,28 @@ export const WallpaperContext: AppContextMenu = {
         {
           caption: "Reset icon alignment",
           action: () => {
-            createErrorDialog({
-              title: "Reset icon alignment?",
-              message: "This will arrange the desktop icons back to their default positions. Do you want to continue?",
-              image: DesktopIcon,
+            createErrorDialog(
+              {
+                title: "Reset icon alignment?",
+                message:
+                  "This will arrange the desktop icons back to their default positions. Do you want to continue?",
+                image: DesktopIcon,
 
-              buttons: [{
-                caption: "Reset",
-                action() {
-                  alignDesktopIcons(true);
-                },
-                suggested: true,
+                buttons: [
+                  {
+                    caption: "Reset",
+                    action() {
+                      alignDesktopIcons(true);
+                    },
+                    suggested: true,
+                  },
+                  { caption: "Cancel", action() {} },
+                ],
+                sound: "arcos.dialog.warning",
               },
-              { caption: "Cancel", action() { } }],
-              sound: "arcos.dialog.warning"
-            }, ProcessStack.getAppPids("ArcShell")[0], true);
+              ProcessStack.getAppPids("ArcShell")[0],
+              true
+            );
           },
           icon: "undo",
         },
@@ -83,20 +90,20 @@ export const WallpaperContext: AppContextMenu = {
               v.sh.showHiddenApps = !v.sh.showHiddenApps;
 
               return v;
-            })
+            });
           },
-          isActive: () => UserDataStore.get().sh.showHiddenApps
-        }
-      ]
+          isActive: () => UserDataStore.get().sh.showHiddenApps,
+        },
+      ],
     },
     SEP_ITEM,
-    /* {
+    {
       caption: "File Manager",
       action: () => {
-        openWindow("FileManager");
+        spawnApp("FileManager");
       },
       image: FileManagerIcon,
-    }, */
+    },
     {
       caption: "Processes",
       action: () => {
@@ -111,7 +118,6 @@ export const WallpaperContext: AppContextMenu = {
       },
       image: AppsIcon,
     },
-    // TODO: IMPLEMENT THESE
     SEP_ITEM,
     {
       caption: "Shut down",
@@ -174,8 +180,8 @@ export const WallpaperContext: AppContextMenu = {
       image: AppInfoIcon,
       caption: "App Info",
       action(window, data, scope) {
-        spawnApp("AppInfo", 0, [data.id])
+        spawnApp("AppInfo", 0, [data.id]);
       },
     },
   ],
-}
+};
