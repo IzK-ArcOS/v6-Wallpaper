@@ -11,11 +11,7 @@
 
   async function update() {
     if (!$UserDataStore) return;
-    if (
-      !Object.keys($UserDataStore.appdata["ArcShell"])
-        .join(",")
-        .includes("icon$")
-    ) {
+    if (!Object.keys($UserDataStore.appdata["ArcShell"]).join(",").includes("icon$")) {
       loading = true;
       await alignDesktopIcons(true);
 

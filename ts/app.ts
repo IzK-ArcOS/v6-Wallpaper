@@ -14,7 +14,7 @@ export const desktopWallpaper: App = {
     appGroup: "coreApps",
     icon: ComponentIcon,
     core: true,
-    hidden: true
+    hidden: true,
   },
   runtime: WallpaperRuntime,
   content: AppSvelte,
@@ -29,9 +29,9 @@ export const desktopWallpaper: App = {
     maximized: false,
     headless: false,
     fullscreen: false,
-    resizable: false
+    resizable: false,
   },
   singleInstance: true,
   contextMenu: WallpaperContext,
-  loadCondition: () => !!UserDataStore.get()
-}
+  loadCondition: () => !!UserDataStore.get(),
+};

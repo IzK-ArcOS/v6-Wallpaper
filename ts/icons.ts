@@ -21,13 +21,13 @@ export async function alignDesktopIcons(overrideLock = false) {
 
   const library = appLibrary.get();
 
-  let apps: App[] = []
+  let apps: App[] = [];
 
   for (const [_, app] of library) {
-    apps.push(app)
+    apps.push(app);
   }
 
-  apps = apps.sort((a) => a.metadata.hidden || a.metadata.core ? 1 : -1);
+  apps = apps.sort((a) => (a.metadata.hidden || a.metadata.core ? 1 : -1));
 
   const GRIDX = 80;
   const GRIDY = 85;
@@ -39,10 +39,7 @@ export async function alignDesktopIcons(overrideLock = false) {
   for (const app of apps) {
     if (app.id == "ExperimentsApp") continue;
 
-    Log(
-      "Wallpaper/ts/icons",
-      `Automatically positioning desktop icon for ${app.id}`
-    );
+    Log("Wallpaper/ts/icons", `Automatically positioning desktop icon for ${app.id}`);
 
     udata.appdata.ArcShell[`icon$${app.id}`] = {
       x: offsetX * GRIDX,
