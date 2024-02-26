@@ -34,5 +34,5 @@ export const desktopWallpaper: App = {
   },
   singleInstance: true,
   contextMenu: WallpaperContext,
-  loadCondition: () => !!UserDataStore.get() && !SafeMode.get(),
+  loadCondition: () => !!UserDataStore.get(),
 };
