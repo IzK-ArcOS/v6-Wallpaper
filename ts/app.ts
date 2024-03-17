@@ -16,6 +16,7 @@ export const desktopWallpaper: App = {
     icon: ComponentIcon,
     core: true,
     hidden: true,
+    dependendsOn: ["ArcShell"],
   },
   runtime: WallpaperRuntime,
   content: AppSvelte,
