@@ -46,8 +46,6 @@ export async function alignDesktopIcons(overrideLock = false) {
       y: offsetY * GRIDY,
     };
 
-    await sleep(1);
-
     offsetX++;
 
     if (offsetX >= MAXX) {
