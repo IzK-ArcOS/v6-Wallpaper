@@ -1,4 +1,3 @@
-import { SafeMode } from "$state/Desktop/ts/store";
 import { ComponentIcon } from "$ts/images/general";
 import { UserDataStore } from "$ts/stores/user";
 import { App } from "$types/app";
