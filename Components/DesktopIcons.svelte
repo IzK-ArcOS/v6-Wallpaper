@@ -10,7 +10,8 @@
   let udsu;
 
   async function update() {
-    if (!$UserDataStore) return;
+    // tbcpl0fjv5ba6gg
+    if (!$UserDataStore || !$UserDataStore.appdata || !$UserDataStore.appdata["ArcShell"]) return;
     if (!Object.keys($UserDataStore.appdata["ArcShell"]).join(",").includes("icon$")) {
       loading = true;
       await alignDesktopIcons(true);
