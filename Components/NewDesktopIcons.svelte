@@ -5,7 +5,7 @@
   import { onMount } from "svelte";
   import NewDesktopIcon from "./DesktopIcons/NewDesktopIcon.svelte";
   import { GlobalDispatch } from "$ts/process/dispatch/global";
-  import { alignDesktopIcons } from "../ts/icons";
+  import { alignDesktopIcons, findFreeDesktopIconPosition } from "../ts/icons";
   import { sleep } from "$ts/util";
   import FolderDesktopIcon from "./DesktopIcons/FolderDesktopIcon.svelte";
 
@@ -13,6 +13,7 @@
   let dirs: PartialUserDir[] = [];
   let loading = true;
   let created = false;
+  let wrapper: HTMLDivElement;
 
   async function update() {
     loading = true;
@@ -43,6 +44,7 @@
   onMount(async () => {
     await update();
     GlobalDispatch.subscribe("fs-flush", update);
+    console.log(findFreeDesktopIconPosition(wrapper));
   });
 </script>
 
@@ -50,12 +52,15 @@
   <div
     class="desktopIcons taskbar-bounds tb-{$UserDataStore.sh.taskbar.pos}"
     class:docked={$UserDataStore.sh.taskbar.docked}
+    bind:this={wrapper}
   >
-    {#each dirs as folder}
-      <FolderDesktopIcon {folder} />
-    {/each}
-    {#each files as item}
-      <NewDesktopIcon {item} />
-    {/each}
+    {#if wrapper}
+      {#each dirs as folder}
+        <FolderDesktopIcon {folder} {wrapper} />
+      {/each}
+      {#each files as item}
+        <NewDesktopIcon {item} {wrapper} />
+      {/each}
+    {/if}
   </div>
 {/if}

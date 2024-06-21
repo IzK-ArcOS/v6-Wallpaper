@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { findFreeDesktopIconPosition } from "$apps/Wallpaper/ts/icons";
   import { spawnApp } from "$ts/apps";
   import { FolderIcon } from "$ts/images/filesystem";
   import { getAppPreference, setAppPreference } from "$ts/server/user/pref";
@@ -9,6 +10,7 @@
   import { onMount } from "svelte";
 
   export let folder: PartialUserDir;
+  export let wrapper: HTMLDivElement;
 
   let id = "";
   let position = { x: 0, y: 0 };
@@ -27,8 +29,6 @@
 
     name = folder.name;
     update();
-
-    console.log(folder);
   });
 
   function updatePos() {
@@ -37,7 +37,13 @@
       y: number;
     };
 
-    position = pos || { x: 0, y: 0 };
+    console.log(pos);
+
+    position = pos || findFreeDesktopIconPosition(wrapper);
+    /* 
+    if (!pos) {
+      setAppPreference("ArcShell", `icon$${id}`, position);
+    } */
   }
 
   function open() {

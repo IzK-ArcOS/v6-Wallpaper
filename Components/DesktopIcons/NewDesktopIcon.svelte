@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { findFreeDesktopIconPosition } from "$apps/Wallpaper/ts/icons";
   import { getAppById, isPopulatable } from "$ts/apps";
   import { isDisabled } from "$ts/apps/disable/utils";
   import { FileIcon } from "$ts/images/filesystem";
@@ -13,6 +14,7 @@
   import { onMount } from "svelte";
 
   export let item: PartialArcFile;
+  export let wrapper: HTMLDivElement;
 
   let populatable = true;
   let isApp = false;
@@ -50,7 +52,7 @@
       y: number;
     };
 
-    position = pos || { x: 0, y: 0 };
+    position = pos || findFreeDesktopIconPosition(wrapper);
   }
 
   function open() {

@@ -56,3 +56,48 @@ export async function alignDesktopIcons(overrideLock = false) {
 
   UserDataStore.set(udata);
 }
+
+export function findFreeDesktopIconPosition(wrapper: HTMLDivElement): { x: number; y: number } {
+  let x = 0;
+  let y = 0;
+
+  const udata = UserDataStore.get();
+
+  if (!Object.keys(udata.appdata["ArcShell"]).join(",").includes("icon$")) {
+    return { x, y };
+  }
+
+  function taken(x: number, y: number): boolean {
+    const appdata = udata.appdata["ArcShell"] as Record<string, { x: number; y: number }>;
+    const values = Object.values(appdata);
+    const filtered = values.filter((v) => v.x == x * 80 && v.y == y * 85);
+
+    return !!filtered.length;
+  }
+
+  let maxX = Math.floor(wrapper.offsetWidth / 80);
+  let maxY = Math.floor(wrapper.offsetHeight / 85);
+
+  console.log(maxX, maxY);
+
+  let foundValue = false;
+
+  while (!foundValue) {
+    x++;
+    if (x >= maxX - 1) {
+      x = 0;
+
+      y++;
+    }
+
+    if (y > maxY - 1) {
+      return { x: x * 80, y: y * 85 };
+    }
+
+    const isTaken = taken(x, y);
+
+    if (!isTaken) foundValue = true;
+  }
+
+  return { x: x * 80, y: y * 85 };
+}
