@@ -12,6 +12,7 @@
   async function update() {
     // tbcpl0fjv5ba6gg
     if (!$UserDataStore || !$UserDataStore.appdata || !$UserDataStore.appdata["ArcShell"]) return;
+
     if (!Object.keys($UserDataStore.appdata["ArcShell"]).join(",").includes("icon$")) {
       loading = true;
       await alignDesktopIcons(true);
@@ -40,8 +41,9 @@
     class="desktopIcons taskbar-bounds tb-{$UserDataStore.sh.taskbar.pos}"
     class:docked={$UserDataStore.sh.taskbar.docked}
   >
+    <!--
     {#each [...$appLibrary] as [_, app]}
       <DesktopIcon {app} />
-    {/each}
+    {/each}-->
   </div>
 {/if}
