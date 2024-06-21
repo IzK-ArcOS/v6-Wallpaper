@@ -77,6 +77,7 @@
   <button
     class="desktopIcon"
     data-id={id}
+    title={name}
     on:dblclick={open}
     use:draggable={{
       grid: $UserDataStore.sh.desktop.noIconGrid ? null : [40, 42.5],
@@ -87,8 +88,11 @@
       disabled: $UserDataStore.sh.desktop.lockIcons,
     }}
     on:neodrag:end={endDrag}
+    class:virtual={item.virtual}
   >
-    <img draggable={false} src={icon} alt={id} />
+    <div class="img">
+      <img draggable={false} src={icon} alt={id} />
+    </div>
     <p class="name">{name}</p>
   </button>
 {/if}

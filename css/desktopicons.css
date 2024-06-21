@@ -53,6 +53,23 @@ div.desktop.tb-vertical-right div.desktopIcons {
   top: 10px;
   left: 10px;
   width: 80px !important;
+  text-align: center;
+}
+
+#desktopWallpaper div.desktopIcons button.desktopIcon.virtual div.img {
+  position: relative;
+}
+
+#desktopWallpaper div.desktopIcons button.desktopIcon.virtual div.img::before {
+  content: "north_east";
+  font-family: "Material Icons Round";
+  color: var(--win-bg);
+  background-color: var(--fg);
+  position: absolute;
+  bottom: 4px;
+  left: -1px;
+  font-size: 10px;
+  border-radius: 2px;
 }
 
 #desktopWallpaper div.desktopIcons button.desktopIcon:hover {
@@ -73,7 +90,11 @@ div.desktop.tb-vertical-right div.desktopIcons {
   text-overflow: ellipsis;
 }
 
+#desktopWallpaper div.desktopIcons button.desktopIcon div.img {
+  margin: 0 auto;
+  width: 32px;
+}
+
 #desktopWallpaper div.desktopIcons button.desktopIcon img {
   height: 32px;
-  margin: 0 8px;
 }

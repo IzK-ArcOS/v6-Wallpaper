@@ -27,6 +27,8 @@
 
     name = folder.name;
     update();
+
+    console.log(folder);
   });
 
   function updatePos() {
@@ -54,6 +56,7 @@
 
 <button
   class="desktopIcon"
+  class:virtual={folder.virtual}
   data-id={id}
   on:dblclick={open}
   use:draggable={{
@@ -66,6 +69,8 @@
   }}
   on:neodrag:end={endDrag}
 >
-  <img draggable={false} src={icon} alt={id} />
+  <div class="img">
+    <img draggable={false} src={icon} alt={id} />
+  </div>
   <p class="name">{name}</p>
 </button>

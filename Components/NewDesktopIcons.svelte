@@ -24,7 +24,9 @@
     }
 
     files = [];
+
     const directory = await readDirectory("Desktop");
+
     files = directory ? directory.files : [];
     dirs = directory ? directory.directories : [];
 
