@@ -8,6 +8,7 @@
   import { alignDesktopIcons, findFreeDesktopIconPosition } from "../ts/icons";
   import { sleep } from "$ts/util";
   import FolderDesktopIcon from "./DesktopIcons/FolderDesktopIcon.svelte";
+  import { ArcSoundBus } from "$ts/soundbus";
 
   let files: PartialArcFile[] = [];
   let dirs: PartialUserDir[] = [];
@@ -39,6 +40,8 @@
     }
 
     loading = false;
+    GlobalDispatch.dispatch("desktop-show");
+    ArcSoundBus.playSound("arcos.system.logon");
   }
 
   onMount(async () => {
