@@ -78,8 +78,6 @@ export function findFreeDesktopIconPosition(wrapper: HTMLDivElement): { x: numbe
   let maxX = Math.floor(wrapper.offsetWidth / 80);
   let maxY = Math.floor(wrapper.offsetHeight / 85);
 
-  console.log(maxX, maxY);
-
   let foundValue = false;
 
   while (!foundValue) {

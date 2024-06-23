@@ -25,7 +25,7 @@
       created = true;
     }
 
-    files = [];
+    // files = [];
 
     const directory = await readDirectory("Desktop");
 
@@ -40,14 +40,15 @@
     }
 
     loading = false;
-    GlobalDispatch.dispatch("desktop-show");
-    ArcSoundBus.playSound("arcos.system.logon");
   }
 
   onMount(async () => {
     await update();
+
+    GlobalDispatch.dispatch("desktop-show");
+    ArcSoundBus.playSound("arcos.system.logon");
+
     GlobalDispatch.subscribe("fs-flush", update);
-    console.log(findFreeDesktopIconPosition(wrapper));
   });
 </script>
 

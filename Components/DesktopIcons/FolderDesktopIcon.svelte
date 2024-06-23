@@ -37,13 +37,7 @@
       y: number;
     };
 
-    console.log(pos);
-
     position = pos || findFreeDesktopIconPosition(wrapper);
-    /* 
-    if (!pos) {
-      setAppPreference("ArcShell", `icon$${id}`, position);
-    } */
   }
 
   function open() {
